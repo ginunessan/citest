@@ -17,8 +17,11 @@ jobs:
       - name: Docker login
         uses: docker/login-action@v1 
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Image docker hub
-        run: docker push ginunessan/teste:ningx
-
+          username: ${{ DOCKERHUB_USERNAME }}
+          password: ${{ DOCKERHUB_TOKEN }}
+      - name: Build and push
+        id: docker_build
+        uses: docker/build-push-action@v2
+        with:
+          push: true
+          tags: ginunessan/teste:ningx
