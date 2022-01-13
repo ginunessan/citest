@@ -1,0 +1,17 @@
+name: Container CI
+
+on:
+  push:
+    branches:
+      - build
+
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      - name: Image docker hub
+        run: docker push ginunessan/teste:ningx
+
